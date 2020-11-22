@@ -1,0 +1,163 @@
+<div style="padding-top: 0px" class="champions">
+  <div class="container">
+
+    <a *ngIf="(userAuth)" class="nav-link" href="#" routerLink="dashboard">Dashboard</a>
+    <a *ngIf="(!userAuth)" class="nav-link" href="#" routerLink="dashboard">Login</a>
+
+    <div style="text-align:center;">
+      <h1 style="margin-bottom: 20px;">
+        Bienvenidos a la {{ title }}
+      </h1>
+      <img class="logoPrincipal" style="margin-bottom:-50px" width="500" src="./assets/images/faraones.png">
+    </div>
+
+
+    <table id="tableQuiniela2" class="table table-dark">
+      <thead>
+        <tr>
+          <th colspan="5">
+            <h5>{{titulo}}</h5>
+          </th>
+        </tr>
+      </thead>
+
+      <tr>
+        <th style="text-align: center; color:yellow;">
+          Local
+        </th>
+
+        <td>
+          <div class="row align-items-center">
+            <div class="col-sm-3 col-md-4 col-lg-5" style="text-align: center;">
+            </div>
+            <div class="col-sm-9 col-md-8 col-lg-7 " style="text-align: center;">
+            </div>
+          </div>
+        </td>
+
+        <th style="text-align: center; color:yellow;">Empate
+        </th>
+
+        <td>
+          <div class="row align-items-center">
+            <div class="col-sm-9 col-md-8 col-lg-7 nameSecond" style="text-align: center;"></div>
+            <div class="col-sm-3 col-md-4 col-lg-5 imgFirst" style="text-align: center;">
+            </div>
+          </div>
+        </td>
+
+        <th style="text-align: center; color:yellow;">Visitante
+        </th>
+
+      </tr>
+
+      <tr *ngFor="let partido of partidos; let ultimo=last; let indice = index;">
+
+
+        <td style="text-align: center;">
+          <input id="check{{indice+1}}" type="hidden">
+          <input id="val{{indice+1}}" type="hidden">
+          <input type="button" id="local{{indice+1}}" class="btn btn-personalized" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" (click)="marcaCasillasLocales(indice+1)">
+        </td>
+
+
+
+        <td>
+          <div class="row align-items-center">
+            <div class="col-sm-3 col-md-4 col-lg-5" style="text-align: center;">
+              <img  class="usoRudo" src="{{partido.urlLocal}}" [src-fallback]="imageDefault" alt=""  />
+            </div>
+            <div class="col-sm-9 col-md-8 col-lg-7 " style="text-align: center;">{{partido.local}}</div>
+          </div>
+        </td>
+
+        <td style="text-align: center;"><input type="button" id="empate{{indice+1}}" class="btn btn-personalized" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            (click)="marcaCasillasEmpates(indice+1)">
+        </td>
+
+        <td>
+          <div class="row align-items-center">
+            <div class="col-sm-9 col-md-8 col-lg-7 nameSecond" style="text-align: center;">{{partido.visitante}}</div>
+            <div class="col-sm-3 col-md-4 col-lg-5 imgFirst" style="text-align: center;">
+              <img fallimg src="{{partido.urlVisitante}}" [src-fallback]="imageDefault" height="30" width="30">
+            </div>
+          </div>
+        </td>
+
+        <td style="text-align: center;"><input type="button" id="visitante{{indice+1}}" class="btn btn-personalized" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            (click)="marcaCasillasVisitantes(indice+1)">
+        </td>
+
+
+      </tr>
+
+      <tr>
+        <td colspan="5" style="text-align:center;">
+          <div class="row">
+            <input id="valCosto" type="hidden" value="{{costo}}">
+            <input id="valTitulo" type="hidden" value="{{titulo}}">
+            <input id="valTelefono" type="hidden" value="{{telefono}}">
+            <div class="col-3 letterMedium"><span style="color:yellow;">Costo: $ {{costo}}</span></div>
+            <div class="col-6 letterMedium">CIERRE:<br> {{fechaCierre}}</div>
+            <div class="col-3 letterMedium"><span id="total" style="color:yellow;">TOTAL: $0</span></div>
+          </div>
+
+        </td>
+
+      </tr>
+
+      <tr id="resQuiniela">
+        <td colspan="5">
+          <div class="row letterBig" style="text-align:center;">
+
+            <div id="res{{indice+1}}" class="col letterCenterV" *ngFor="let partido of partidos; let indice = index;">-</div>
+
+            <div class="col">
+              <button id="addBtn" type="button" class="btn btn-primary letterBig" disabled="true"><span>&nbsp;+&nbsp;</span></button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table id="tableRes2" class="table table-striped blanco">
+      <tbody id="oldTbody2"></tbody>
+    </table>
+
+    <table id="tableName" class="table table-dark">
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-4 col-xs-6" style="display:flex; justify-content:center; align-items:center; font-size:20px;">NOMBRE:</div>
+            <div class="col-8 col-xs-6">
+              <input class="form-control" id="campoNombre">
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="text-align:center;">
+          <div class="row">
+            <div class="col-4">
+              <button id="clearBtn" type="button" class="btn btn-primary">LIMPIAR</button>
+            </div>
+
+            <div class="col-4">
+              <button id="randomBtn" type="button" class="btn btn-success"><i class="fas fa-random"></i> ALEATORIO</button>
+            </div>
+
+
+            <div class="col-4">
+              <button id="sendBtn" type="button" class="btn btn-success" disabled="true">ENVIAR</button>
+            </div>
+
+          </div>
+        </td>
+
+      </tr>
+    </table>
+
+
+  </div>
+</div>

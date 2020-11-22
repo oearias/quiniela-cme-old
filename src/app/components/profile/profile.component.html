@@ -1,0 +1,133 @@
+<div class="card">
+  <div class="ml-3 mr-3 pb-4">
+    <div class="pt-4">
+      <h1 class="m-0">Editar mi Perfil</h1>
+    
+      <div class="form-container mt-5">
+        <form [formGroup]="userForm" (ngSubmit)="onSaveForm()">
+    
+          <div style="display:flex;justify-content:center;align-items:center;" class="mb-3">
+            <div class="contenedor">
+              <a href="#" data-toggle="collapse" data-target="#collapseExample">
+                <img [src-fallback]="imageDefault" src="{{urlCircle}}" class="image"></a>
+    
+              <div class="overlay">
+                <div class="text">Editar</div>
+              </div>
+            </div>
+          </div>
+    
+    
+    
+          <div class="collapse form-row mb-3" id="collapseExample">
+            <div class="col">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" (change)="detectFiles($event)" lang="es"
+                  accept="image/x-png, image/jpeg" id="inputFile">
+                <label id="labelInput" class="custom-file-label" lang="es">{{labelInputFile}}</label>
+              </div>
+    
+    
+    
+    
+              <br>
+              <br>
+    
+              <div *ngIf="finalizado!=true" class="progress">
+                <div class="progress-bar bg-success" role="progressbar" [style.width]="(progress  )+'%' ">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="form-row">
+            <div class="form-group col">
+              <input type="hidden" formControlName="id">
+              <!--<input type="hidden" id="urlInput" [value]="urlImage | async" formControlName="url" class="form-control">-->
+              <input type="hidden" id="urlInput" [value]="urlImage" formControlName="url" class="form-control">
+              <label for="inputNombre">Nombre:</label>
+              <input type="text" id="inputNombre" class="form-control" formControlName="nombre">
+              <div class="alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div class="container-error-message" *ngIf="nombre.errors.required">
+                  *nombre es requerido
+                </div>
+                <div class="container-error-message" *ngIf="nombre.errors.minlength">
+                  *nombre debe tener mínimo 3 carácteres
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="inputApellido">Apellido:</label>
+              <input type="text" id="inputApellido" class="form-control" formControlName="apellido">
+              <div class="alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div class="container-error-message" *ngIf="apellido.errors.required">
+                  *apellido es requerido
+                </div>
+    
+                <div class="container-error-message" *ngIf="apellido.errors.minlength">
+                  *apellido debe tener mínimo 3 carácteres
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <button id="volver" type="button" (click)="volver()" class="btn btn-primary mt-3 mr-5"><i
+              class="fas fa-arrow-circle-left"></i>
+            Volver</button>
+    
+          <button type="submit" class="btn btn-primary mt-3" [disabled]="(!userForm.valid)"><i class="fas fa-save"></i>
+            Guardar</button>
+    
+        </form>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar foto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" lang="es" id="inputGroupFileAddon01">Subir</span>
+                </div>
+                <div class="custom-file">
+                  <!--<input type="file" class="custom-file-input" (change)="detectFiles($event)" lang="es" accept="image/x-png, image/jpeg" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">-->
+                  <!--2nd option
+                  <input type="file" class="custom-file-input" (change)="onUpload($event)" lang="es"
+                    accept="image/x-png, image/jpeg" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  -->
+                  <input type="file" class="custom-file-input" (change)="detectFiles($event)" lang="es"
+                    accept="image/x-png, image/jpeg" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" lang="es" for="inputGroupFile01">Seleccionar Archivo</label>
+                </div>
+              </div>
+    
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    
+            <button id="uploadBtn" (click)="onUpload()" disabled="true" type="button" class="btn btn-primary">
+              Subir foto</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,182 @@
+<body class="skin-black sidebar-mini black">
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 
+          
+          si lo ocultamos pondremos el logo
+          pixels -->
+        <img style="width: 50px;" class="logo-mini" src="../../assets/images/faraon.png">
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Quiniela Carmen</b></span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        
+        <div class="navbar-custom-menu icono" >
+          <ul class="nav navbar-nav">
+            <li>
+
+              <a class="dropdown icono" data-toggle="dropdown" href="#" style="padding: 0; ">
+                <i class="fas fa-user"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right deployed">
+                <span class="dropdown-item dropdown-header">Mi Cuenta</span>
+
+                <div class="dropdown-divider"></div>
+                <a (click)="onClickProfile(uid)" href="#" [routerLink]="['./dashboard/profile']" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> &nbsp;&nbsp;&nbsp;Perfil
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a (click)="onClickLogOut()" href="#" class="dropdown-item">
+                  <i class="fas fa-sign-out-alt"></i> &nbsp;&nbsp;&nbsp;Cerrar Sesión
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+
+
+      <!-- Right navbar links -->
+      <!----
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header">Mi Cuenta</span>
+
+            <div class="dropdown-divider"></div>
+            <a (click)="onClickProfile(uid)" href="#" [routerLink]="['./dashboard/profile']" class="dropdown-item">
+              <i class="fas fa-user-circle"></i> &nbsp;&nbsp;&nbsp;Perfil
+            </a>
+
+            <div class="dropdown-divider"></div>
+            <a (click)="onClickLogOut()" href="#" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i> &nbsp;&nbsp;&nbsp;Cerrar Sesión
+            </a>
+          </div>
+        </li>
+      </ul>-->
+
+
+
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="{{url}}" [src-fallback]="imageDefault" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <div><a href="#" style="font-size: 18px;" (click)="onClickProfile(uid)"
+                [routerLink]="['./dashboard/profile']"><span
+                  style="font-weight: 600; font-size: 16px;;">{{nombreUsuario}}</span></a></div>
+            <span style="font-size: 12px;"><i class="fa fa-circle text-success"></i>&nbsp;En línea</span>
+          </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header mt-3">MENÚ PRÍNCIPAL</li>
+
+
+          <!----
+          <li class="active treeview">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>Catálogos</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+          
+
+            <ul class="treeview-menu">
+              <li><a href="index.html"><i class="fas fa-users"></i>&nbsp;&nbsp;&nbsp;Usuarios</a></li>
+              <li><a href="index.html"><i class="fas fa-flag"></i>&nbsp;&nbsp;&nbsp;Equipos</a></li>
+              <li class="active"><a href="index2.html"><i class="fas fa-futbol"></i>&nbsp;&nbsp;&nbsp;Partidos</a></li>
+            </ul>
+
+          </li>
+          -->
+
+          <li class="active">
+            <a href="#" class="nav-link" [routerLink]="['./settings']">
+              <i class="fas fa-cog"></i><span>&nbsp;&nbsp;&nbsp;Configuración</span>
+            </a>
+          </li>
+
+          <li class="active" *ngIf="uid=='yIq1vQPWKVWnoiiCNHzK0bVbh903' ">
+            <a href="#" class="nav-link" [routerLink]="['./users']">
+              <i class="fas fa-users"></i><span>&nbsp;&nbsp;&nbsp;Usuarios</span>
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="#" class="nav-link" [routerLink]="['./equipos']">
+              <i class="fas fa-flag"></i><span>&nbsp;&nbsp;&nbsp;Equipos</span>
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="#" class="nav-link" [routerLink]="['./partidos']">
+              <i class="fas fa-futbol"></i><span>&nbsp;&nbsp;&nbsp;Partidos</span>
+              <small class="label pull-right bg-blue">{{numPartidos}}</small>
+            </a>
+          </li>
+
+          <li class="active">
+            <a href="#" class="nav-link" [routerLink]="['/']">
+              <i class="fas fa-file-powerpoint"></i><span>&nbsp;&nbsp;&nbsp;Planilla</span>
+            </a>
+          </li>
+
+
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+      <flash-messages></flash-messages>
+
+
+
+      <!-- Main content -->
+      <section class="content">
+
+        <router-outlet></router-outlet>
+
+
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Copyright &copy; 2020-2022 <a style="color:#343a40;" href="#">Quiniela Carmen</a>.</strong> Todos los
+      derechos reservados.
+    </footer>
+
+  </div>
+</body>

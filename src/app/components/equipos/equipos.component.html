@@ -1,0 +1,93 @@
+<div class="card">
+  <div class="ml-1 mr-1 mb-1">
+    <table class="table">
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col container2">
+              <div class="col5">
+                <div class="vertical-center">
+                  <h1 class="m-0">Equipos</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-5 container2 d-flex flex-row-reverse">
+              <div class="vertical-center">
+                <button class="btn btn-primary" (click)="createEquipo()"><i class="fas fa-plus-circle"></i> Nuevo
+                  Equipo</button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    <table class="table blanco table-striped">
+    
+      <thead>
+        <tr>
+          <th scope="col">
+            <div style="margin-left: 20px;">
+              Nombre
+            </div>
+          </th>
+    
+          <th style="text-align:center">
+            Escudo
+          </th>
+    
+          <th colspan="2">
+            <div class="input-group">
+              <input class="form-control border-right-0" placeholder="Búsqueda..." [(ngModel)]="searchText">
+              <span class="input-group-append bg-white border-left-0">
+                <span class="input-group-text bg-transparent">
+                  <i class="fas fa-search"></i>
+                </span>
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr
+          *ngFor="let equipo of equipos | filter: searchText | paginate: { itemsPerPage:7, currentPage: p}; let i = index">
+    
+          <td class="sujetador" style=" line-height: 40px; ">
+            <input type="hidden" value="{{equipo.uid}}">
+            <div style="margin-left: 20px;">
+              {{equipo.nombre}}
+            </div>
+          </td>
+    
+          <td>
+            <div class="row">
+              <div class="individual" class="col" style="text-align:center">
+                <img fallimg class="usoRudo" src='{{equipo.url}}' alt="">
+              </div>
+            </div>
+          </td>
+    
+          <td class="individual" style="text-align: center;">
+            <button (click)="editEquipo(equipo)" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+    
+    
+    
+          </td>
+    
+          <td class="individual" style="text-align: center;">
+            <button (click)="onDelete($event,equipo)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </td>
+    
+        </tr>
+      </tbody>
+    
+    </table>
+    
+    <div style="text-align: center;" class="mt-3">
+      <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" responsive="true" maxSize="7"
+        (pageChange)="p = $event">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

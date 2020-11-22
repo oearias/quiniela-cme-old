@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="ml-1 mr-1 mb-1">
+
+    <table class="table">
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col container2">
+              <div class="col5">
+                <div class="vertical-center">
+                  <h1 class="m-0">Usuarios</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 container2 d-flex flex-row-reverse">
+              <div class="vertical-center">
+                <button class="btn btn-primary" (click)="createUser()"><i class="fas fa-plus-circle"></i> Nuevo
+                  Usuario</button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="table blanco table-striped">
+      <thead>
+        <tr>
+          <th class="uid">
+            UID</th>
+          <th>
+            Nombre
+          </th>
+
+          <th colspan="2">
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let user of users ; let i = index">
+
+          <td class="uid">
+              <input type="hidden" value="{{user.uid}}">
+              {{user.uid}}
+          </td>
+          <td class="sujetador">
+            <div>
+              {{user.nombre}}&nbsp;{{user.apellido}}
+            </div>
+          </td>
+          <td class="individual">
+            <button (click)="editUser(user)" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+
+          </td>
+          <td class="individual">
+            <button (click)="onDelete($event,user)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+ 
+  </div>
+</div>

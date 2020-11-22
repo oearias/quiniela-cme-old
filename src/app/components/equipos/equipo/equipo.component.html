@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="pt-4 ml-3 mr-3 pb-5">
+    <h1 class="m-0" *ngIf="!editingEquipo.id">Crear nuevo Equipo</h1>
+    <h1 class="m-0" *ngIf="editingEquipo.id">Editar Equipo</h1>
+
+    <div class="form-container mt-5">
+      <form [formGroup]="equipoForm" (ngSubmit)="onSaveForm()">
+
+        <div class="form-row">
+          <div class="form-group col">
+            <input type="hidden" formControlName="id">
+            <label for="inputNombre">Nombre:</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div class="alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+              <div class="container-error-message" *ngIf="nombre.errors.required">
+                *nombre es requerido
+              </div>
+              <div class="container-error-message" *ngIf="nombre.errors.minlength">
+                *nombre debe tener mínimo 3 carácteres
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="inputUrl">URL:</label>
+            <input type="text" class="form-control" formControlName="url">
+            <div class="alert-danger" *ngIf="url.invalid && (url.dirty || url.touched)">
+              <div class="container-error-message" *ngIf="url.errors.required">
+                *url es requerido
+              </div>
+
+              <div class="container-error-message" *ngIf="url.errors.minlength">
+                *url debe tener mínimo 3 carácteres
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="volver" type="button" (click)="volver()" class="btn btn-primary mt-3 mr-5"><i
+            class="fas fa-arrow-circle-left"></i>
+          Volver</button>
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!equipoForm.valid"><i class="fas fa-save"></i>
+          Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>

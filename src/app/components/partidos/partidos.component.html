@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="ml-1 mr-1 mb-1">
+    <table class="table">
+
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-8 container2">
+              <div class="col5">
+                <div class="vertical-center">
+                  <h1>Partidos</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 container2 d-flex flex-row-reverse">
+              <div class="vertical-center">
+                <button class="btn btn-primary" (click)="createPartido()"><i class="fas fa-plus-circle"></i> Nuevo
+                  Partido</button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    
+    <table class="table blanco table-striped">
+    
+      <thead>
+        <tr>
+          <th scope="col">
+            <div style="margin-left: 10px;">
+              Núm.
+            </div>
+          </th>
+    
+          <th style="text-align:left">
+            Local
+          </th>
+    
+          <th style="text-align:left">
+            Visitante
+          </th>
+    
+          <th colspan="2">
+          </th>
+    
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr
+          *ngFor="let partido of partidos">
+    
+          <td>
+            <div class="individual2" style="margin-left: 20px;">
+              {{partido.numero}}
+            </div>
+          </td>
+    
+          <td class="sujetador">
+            <div>
+              {{partido.nombreLocal}}
+            </div>
+          </td>
+    
+          <td class="sujetador">
+            <div>
+              {{partido.nombreVisitante}}
+            </div>
+          </td>
+    
+    
+          <td class="individual" style="text-align: center;">
+            <button (click)="editPartido(partido)" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+          </td>
+    
+          <td class="individual" style="text-align: center;">
+            <button (click)="onDelete($event,partido)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </td>
+    
+        </tr>
+      </tbody>
+    
+    </table>
+  </div>
+</div>

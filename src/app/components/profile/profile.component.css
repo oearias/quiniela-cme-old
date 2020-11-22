@@ -1,0 +1,56 @@
+.card-profile-image img:hover{
+        transform: translate(0%, -5%);
+        border: 4px solid rgb(56, 134, 235);
+}
+
+
+.contenedor {
+        position: relative;
+        width: 150px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 100%;
+      }
+      
+      .image {
+        display: block;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        padding-left: -20px;
+        
+      }
+
+      .image:hover{
+        border: 10px solid rgb(56, 134, 235);
+      }
+      
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        width: 150px;
+        border-radius: 0 0 100px 100px;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: rgb(100,100,100, 0.7);
+        pointer-events: none;
+        
+      }
+      
+      .contenedor:hover .overlay {
+        opacity: 1;
+      }
+      
+      .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-30%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }

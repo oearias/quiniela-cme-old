@@ -1,0 +1,35 @@
+.label{
+    margin-top: 3px;
+}
+
+.navbar-nav .icono a{
+    color: #c2c7c0;
+    padding: 0;
+}
+
+.navbar-nav a:hover{
+    background-color: #343a40;
+    color: #fff;
+}
+
+.navbar-nav a:active{
+    background-color: #343a40;
+    color: #fff;
+}
+
+
+.navbar-nav a:focus{
+    background-color: #343a40;
+    color: #fff;
+}
+
+@media (min-width: 221px) and (max-width: 768px) { 
+    .icono{
+        color: #c2c7c0;
+    }
+}
+
+.deployed a:hover{
+    background:#007bff
+}
+

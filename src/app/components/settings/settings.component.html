@@ -1,0 +1,90 @@
+<div class="card">
+  <div class="ml-3 pt-5 mr-3">
+    <h1 class="m-0">Configuraciones de la Quiniela</h1>
+
+    <div class="form-container">
+      <form [formGroup]="settingsForm" (ngSubmit)="onSaveForm()">
+    
+        <div class="form-row mt-5">
+    
+    
+    
+          <div class="form-group col-xl-6">
+            <input type="hidden" formControlName="id">
+    
+            <label for="inputNombre">Título:</label>
+            <input type="text" class="form-control col" formControlName="titulo">
+            <div class="alert-danger" *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+              <div class="container-error-message" *ngIf="titulo.errors.required">
+                *Título es requerido
+              </div>
+              <div class="container-error-message" *ngIf="titulo.errors.minlength">
+                *Título debe tener mínimo 3 carácteres
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="form-row">
+          <div class="form-group col-xl-2 col-md-4">
+            <label for="inputFechaCierre">Fecha del cierre:</label>
+            <input type="date" class="form-control" formControlName="fechaCierre">
+            <div class="alert-danger" *ngIf="fechaCierre.invalid && (fechaCierre.dirty || fechaCierre.touched)">
+              <div class="container-error-message" *ngIf="fechaCierre.errors.required">
+                *Fecha es requerido
+              </div>
+    
+            </div>
+          </div>
+        </div>
+    
+        <div class="form-row">
+          <div class="form-group col-xl-1 col-md-4">
+            <label for="inputUrl">Costo:</label>
+            <input type="number" class="form-control" formControlName="costo">
+            <div class="alert-danger" *ngIf="costo.invalid && (costo.dirty || costo.touched)">
+              <div class="container-error-message" *ngIf="costo.errors.required">
+                *Costo es requerido
+              </div>
+    
+              <div class="container-error-message" *ngIf="costo.errors.minlength">
+                *Costo debe tener mínimo 2 carácteres
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+        <div class="form-row">
+          <div class="form-group col-xl-2 col-md-4">
+            <label for="inputUrl">Teléfono de Whatsapp:</label>
+            <input type="text" class="form-control" formControlName="telefono">
+            <div class="alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+              <div class="container-error-message" *ngIf="telefono.errors.required">
+                *Teléfono es requerido
+              </div>
+    
+              <div class="container-error-message" *ngIf="telefono.errors.minlength">
+                *Teléfono debe tener mínimo 10 carácteres
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+    
+        <button id="volver" type="button" (click)="volver()" class="btn btn-primary mt-3 mr-5"><i
+            class="fas fa-arrow-circle-left"></i>
+          Volver</button>
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!settingsForm.valid"><i class="fas fa-save"></i>
+          Guardar</button>
+      </form>
+      <br>
+      <br>
+    </div>
+  </div>
+ 
+</div>
+
+

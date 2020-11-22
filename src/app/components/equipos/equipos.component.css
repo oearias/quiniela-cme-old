@@ -1,0 +1,106 @@
+.letterCenterV{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.usoRudo {
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px; /* Half the height */
+ }
+
+ .rudex td {
+    vertical-align: middle;
+    text-align: center;
+ }
+
+ .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .container2 { 
+    position: relative;
+    height: 80px;
+  }
+
+  td{
+   height: 60px;;
+ }
+
+ th{
+   height: 60px;
+ }
+
+
+ /*
+ */
+
+ @media (max-width: 420px) { 
+   table{
+     width: 100%;
+   }
+   td {
+     padding: 0.30rem;
+     font-size: 12px;
+
+   }
+}
+
+@media (min-width: 421px) and (max-width: 768px) { 
+   table{
+     width: 100%;
+   }
+
+   .sujetador{
+      width: 40%;
+   }
+
+   .individual{
+      width: 20%;
+   }
+}
+   
+
+@media (min-width: 769px) and (max-width: 1024px) { 
+
+   table{
+      width: 100%;
+   }
+
+   .sujetador{
+      width: 49%;
+   }
+
+   .individual{
+      width: 17%;
+   }
+}
+
+@media (min-width: 1025px) { 
+
+   table{
+   width: 100%;
+   }
+   td {
+   font-size: 16px;
+   }
+
+   .sujetador{
+      width: 79%;
+   }
+
+   .individual{
+      width: 7%;
+   }
+}
+
+
+       /**/
+
